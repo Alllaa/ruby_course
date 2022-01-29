@@ -1,3 +1,8 @@
+=begin
+    
+rescue => exception
+    
+end
 def get_arr
     [2 , 4]
 end
@@ -43,31 +48,35 @@ def divide(first_number , second_number)
 end
 # main_calculator
 
-
+=end
 ################
 
 # inject_code
 
+=begin
 def inject_code
-    counter = (1..5)
- p  counter.inject { |c , n | 
-    n + c
-}
-p counter
+        counter = (1..5)
+    p  counter.inject(0,:-) { |c , n | 
+        n + c
+    }
+    p counter
 
-p counter.collect {
-    |c | 
-    c + c
-}
-p counter
+    p counter.collect {
+        |c | 
+        c + c
+    }
+    p counter
 
-p counter.map{
-    |c | 
-    c + c
-}
-p counter
+    p counter.map{
+        |c | 
+        c + c
+    }
+    p counter
+
 end
+
 inject_code
+=end
 
 # Sort Method 
 def sort_method
@@ -81,7 +90,7 @@ def sort_method
     p arr.sort!{ |v1 , v2 | v1 <=> v2 }
     p arr 
 end
-sort_method
+#sort_method
 
 def merge_data
     haider = {first_name: "Abdelrhman" ,
@@ -95,16 +104,23 @@ def merge_data
     }
     p students_data
 end
-merge_data
+#merge_data
 
 
 ## Args 
 
+
+#rescue => exception
+    
+
+
 def args_method(*arg)
     p arg.count
+    p arg
 end
+
 p "ARRRGS TEST"
-args_method("Haider" , 2 , 5 ,6)
+args_method("Haider" , 2 , 5 ,6, phone: "012200000")
 
 def arg_hash(**arg)
     p arg
