@@ -19,83 +19,14 @@ puts haider.noise
 # private  vs public 
 
 # self classes
-class Main
-    @@classes = []
-    @@students = []
+=begin
 
-    def self.addClass(num_of_classes)
-        num_of_classes.times{ |num|
-            print "please enter the name of class number #{num+1}: "
-            name_of_class =  gets.chomp
-            @@classes.push(ClassRoom.new(name_of_class))
-        }
-        return [@@classes[-1].name, @@classes[-1].id]
-    end
+  
+   
 
-    def self.addstudents(name, class_room_id)
-            print "please enter the number of students for class #{name}: "
-            num_of_students =  gets.chomp.to_i
-            puts "please enter the details of each student for class #{name}: "
-            num_of_students.times{ |num|
-                p "Student #{num}"
-                print("enter name of student #{num}: ")
-                name =  gets.chomp
-                print("enter age of student #{num}: ")
-                age =  gets.chomp.to_i
-                print("enter address of student #{num}: ")
-                address =  gets.chomp
-                print("enter phone of student #{num}: ")
-                phone =  gets.chomp
-                stud = Student.new(name:name, age: age, address: address, phone: phone, class_room_id: class_room_id) 
-                @@students.push(stud)
-            }
-        num_of_classes = 0
-    end
+    
 
-    def self.insert_new_student
-        p "choose a class to add the new Student in: "
-        print "the classes are:"
-        @@classes.each{ |clas|
-            print "[#{clas.name}, "
-        }
-        p ']'
-        print "Enter name of class: "
-        name_of_class = gets.chomp
-        class_name = ''
-        class_id = 0
-        @@classes.each{|clas|
-            if clas.name == name_of_class
-                class_name = clas.name
-                class_id = clas.id
-            end
-        }
-        return [class_name,class_id]
-
-    end
-
-    def self.search_student
-        p "write name of student and phone number: "
-        print "name is: "
-        name  = gets.chomp
-        print "phone is: "
-        phone  = gets.chomp
-        @@students.each{|student|
-            if (student.name == name && student.phone == phone)
-                p "the student is found"
-                p student
-                return
-            end
-        }
-        p "no student found"
-    end
-    def self.all_classes
-        @@classes
-    end
-    def self.all_students
-        @@students
-    end
-
-end
+    
 key_words = ["exit", "search", "insert_new_class_room","insert_new_student"]
 state = 'go'
 
@@ -127,13 +58,53 @@ while state != "exit"
     state = gets.chomp
 
 end
-p Main.all_classes
-p Main.all_students
+
+=end
 
 
+=begin
+student = Student.new(name:'abdo',age:15, address: "giza",phone: '546', class_room_id: 1)
+haider = Student.new(name: "alaa" , phone: "012000000" , address: "Alex " , age: 25,class_room_id: 2)
+haider2 = Student.new(name: "mohamed" , phone: "012000000" , address: "Alex " , age: 25,class_room_id: 1)
+haider3 = Student.new(name: "gaber" , phone: "012000000" , address: "Alex " , age: 25,class_room_id: 0)
+haider4 = Student.new(name: "abdo" , phone: "012000000" , address: "Alex " , age: 25,class_room_id: 2)
+haider5 = Student.new(name: "momn" , phone: "012000000" , address: "Alex " , age: 25,class_room_id: 1)
+haider6 = Student.new(name: "moahmed" , phone: "012000000" , address: "Alex " , age: 25,class_room_id: 0)
+haider7 = Student.new(name: "Haider" , phone: "012000000" , address: "Alex " , age: 25,class_room_id: 2)
+math = ClassRoom.new(name: "math")
+eng = ClassRoom.new(name: "english")
+ara = ClassRoom.new(name: "arabic")
 
+#Student.print_all_students
+#p Student.search_student
+p Student.insert_new_student
+=end
 
-
-
-
-
+state = 'go'
+print "Welcome in School System Please Add how many Classes Room:" 
+num_of_classes = gets.chomp.to_i   
+ClassRoom.addClass(num_of_classes)
+while(state != 'exit')
+    if state == 'search'
+        result = Student.search_student
+        if(result == nil)
+            p "No Student Found"
+        else 
+            Student.print_student(result)
+        end
+    end
+    if state == 'insert_new_student'
+        Student.insert_new_student
+    end
+    if state == 'insert_new_class'
+        ClassRoom.addClass(1)
+    end
+    if state == 'print_all_student'
+       Student.print_all_students
+    end
+    if state == 'print_all_classes'
+        ClassRoom.print_all_class_room
+    end
+    p 'exit, search, insert_new_class, insert_new_student, print_all_student, print_all_classes'
+    state = gets.chomp
+end

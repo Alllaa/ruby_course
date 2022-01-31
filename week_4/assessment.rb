@@ -19,5 +19,5 @@
 #
 # and now I can exit from App if make "exit" as string
 # or make search student when write "search"
-# or make insert new classroom when write "insert_new_class_room" with students
+# or make insert new classroom when write " " with students
 # or make insert new student with choice class_room when write "insert_new_student"
